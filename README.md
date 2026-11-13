@@ -43,3 +43,13 @@ php n'accept pas olus d'une declaration de constructeur
 **Reponse :** l'ordre inverse de la declaration .
 - [ ] **2.3.d** Ajoutez dans `Personne` un destructeur affichant « Détruire `nom_class` » (utilisez `__CLASS__`) puis testez votre programme.
  |
+
+### Partie 3 : 
+|- [ ] **3.1** Complétez les quatre méthodes et vérifiez les résultats attendus.
+**Reponse :** resultat : Hachimi; bool(true); bool(true); Propriété telephone inexistante
+- [ ] **3.2**  Sans `__set`, que se passerait-il en écrivant `$p->nom = "X"` si `nom` est `private` ? Et avec `__set` ?
+**Reponse :**Sans `__set` le php declenche un fatal erreur car la permisson est non accordé pour modifier directement la propriété .
+avec `__set` php execute le methode magique __set().
+- [ ] **3.3**  `__set` peut-il casser l'encapsulation ? Que faire pour **valider** la valeur (ex. refuser un `nom` vide) ?
+**Reponse :**  oui, la surchage magique via __set et __get donne l'accée sous forme d'attributs publics virtuel, ce qui permet de casser l'encapsulation. 
+- [ ] **3.4** Dans `__set`, ajoutez une validation : le nom ne doit pas être vide et doit contenir au moins 2 caractères (`strlen`). Sinon, lancez `throw new InvalidArgumentException("...")`.|
