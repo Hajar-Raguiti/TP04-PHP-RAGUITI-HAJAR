@@ -71,3 +71,25 @@ avec `__set` php execute le methode magique __set().
 **Reponse :** on a observé que dans l'affichage :["motDePasse":"Utilisateur":private]=> string(0) "" , la valeur de mdp est une chaine vide.
 - [ ] **5.4**  **Réflexion sécurité :** pourquoi ne faut-il **jamais** appeler `unserialize()` sur des données provenant de l'utilisateur (cookie, formulaire…) ? Cherchez le terme *PHP Object Injection*. Quelle alternative utiliser pour échanger des données (indice : `json_encode` / `json_decode`) ?
 **Reponse :**car ce permet a l'attaquant de manipuler la chain pour injecter des objets malveillants si les données passé par la serialisation sont mal serialisé. alternative utiliser: il est recommandé d'utiliser les fonctions json_encode et json_decode .|
+
+### Partie  : 
+|- [ ] **6.1.b**  Peut-on appeler `$c->miauler()` ? Pourquoi ? 
+**Reponse :**  non , $c est un object de class chien , et la méthode concerne la class chat .
+- [ ] **6.2.a** Supprimez l'appel `parent::__construct($nom)`. Que se passe-t-il ? Pourquoi ?
+**Reponse :** un Fatal erreur s'affiche 'Personne::$nom must not be accessed before initialization' , puisque  le$nom n'est pas initialisé .
+- [ ] **6.2.b** Pourquoi `$nom` est-il `protected` et non `private` dans `Personne` ? 
+**Reponse :** pour avoir l'accès d'hériter la class . 
+- [ ] **6.3.a**  Essayez successivement : (1) redéfinir `afficher()` dans une classe `Fille extends Base` ; (2) créer `class SousOutil extends Outil {}` ; (3) exécuter `$p->reference = "REF-002";`. Notez les 3 erreurs.
+**Reponse :** 
+(1) :Cannot override final method Base.
+(2) :Class SousOutil cannot extend final class Outil
+(3) :Cannot modify readonly property Produit::$reference
+- [ ] **6.3.b**  Donnez un exemple réel où `readonly` est pertinent (identifiant, date de création…) et un où `final` est pertinent.
+**Reponse :** Identifiant un utilisateur , pour garder les données enchangé.
+- [ ] **6.4.a**  Dans `Etudiant`, essayez d'appeler `$this->getAge()` (privée dans `Personne`). Que se passe-t-il ? Quelle visibilité faut-il donner à `getAge()` pour que ça fonctionne ?
+**Reponse :** 
+- [ ] **6.4.b**  Essayez d'accéder à `$this->dateNaissance` depuis `Etudiant`. Pourquoi est-ce impossible alors que `Etudiant` *est une* `Personne` ?
+**Reponse :** 
+- [ ] **6.4.c**  Quel est l'avantage de réutiliser `parent::__toString()` plutôt que de tout réécrire ?
+**Reponse :** 
+|
