@@ -53,3 +53,11 @@ avec `__set` php execute le methode magique __set().
 - [ ] **3.3**  `__set` peut-il casser l'encapsulation ? Que faire pour **valider** la valeur (ex. refuser un `nom` vide) ?
 **Reponse :**  oui, la surchage magique via __set et __get donne l'accée sous forme d'attributs publics virtuel, ce qui permet de casser l'encapsulation. 
 - [ ] **3.4** Dans `__set`, ajoutez une validation : le nom ne doit pas être vide et doit contenir au moins 2 caractères (`strlen`). Sinon, lancez `throw new InvalidArgumentException("...")`.|
+
+### Partie 4 : 
+|- [ ] **4.1**  `getAge()` est `private`, pourtant elle fonctionne ici. Pourquoi ? (cf. question 1.3)
+**Reponse :** oui, puisque une method de mem class peut l'appelé , ici le méthode `__toString()` a l'accée de cette propriété .
+- [ ] **4.2** Que se passe-t-il si `__toString()` retourne un entier au lieu d'une chaîne ? Testez.
+**Reponse :** 
+- [ ] **4.3** *Bonus :* c'est quoi l'intérêt de `__toString()` par rapport à `getName()` ? Listez deux situations où il est pratique.
+**Reponse :**  l'intérêt  est de permet de convertir en texte automatiquement .|
