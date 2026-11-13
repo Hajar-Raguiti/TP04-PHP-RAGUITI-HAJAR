@@ -61,3 +61,13 @@ avec `__set` php execute le methode magique __set().
 **Reponse :** 
 - [ ] **4.3** *Bonus :* c'est quoi l'intérêt de `__toString()` par rapport à `getName()` ? Listez deux situations où il est pratique.
 **Reponse :**  l'intérêt  est de permet de convertir en texte automatiquement .|
+
+### Partie 5 : 
+|- [ ] **5.1** Exécutez et observez la chaîne sérialisée. Le mot de passe y figure-t-il ?
+**Reponse :** mdp ne s'affiche pas .
+- [ ] **5.2**  Mettez `__serialize()` en commentaire et relancez. Que constatez-vous dans la chaîne ? Quel risque cela représente-t-il ?
+**Reponse :** il ya l'affichage : '"UtilisateurmotDePasse";s:9:"secret123"' donc on risque d'exposer l emdp au public .
+- [ ] **5.3**  Après `unserialize`, quelle est la valeur de `$motDePasse` ? Que faudrait-il prévoir dans une vraie application ?
+**Reponse :** on a observé que dans l'affichage :["motDePasse":"Utilisateur":private]=> string(0) "" , la valeur de mdp est une chaine vide.
+- [ ] **5.4**  **Réflexion sécurité :** pourquoi ne faut-il **jamais** appeler `unserialize()` sur des données provenant de l'utilisateur (cookie, formulaire…) ? Cherchez le terme *PHP Object Injection*. Quelle alternative utiliser pour échanger des données (indice : `json_encode` / `json_decode`) ?
+**Reponse :**car ce permet a l'attaquant de manipuler la chain pour injecter des objets malveillants si les données passé par la serialisation sont mal serialisé. alternative utiliser: il est recommandé d'utiliser les fonctions json_encode et json_decode .|
